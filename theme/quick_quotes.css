@@ -57,7 +57,7 @@ body {
 
 .main {
     grid-area: main;
-    background-color: #eee;  /* very pale grey */
+    background-color: #DBE8EE;  /* very pale grey */
     border: solid 1px #CCC;
 }
 
@@ -128,7 +128,7 @@ body {
 
 /* logo, banner and footer background are the same */
 .banner, .footer {
-    background-color: #dc5d5d;  /* dark grey */
+    background-color: #dc5d5d;  /* red */
 }
 
 /* Set font on dark areas to white */
@@ -211,4 +211,23 @@ input {
     border-radius: 5px 0 0 5px; 
     display: inline-block;
 }
+
+.results {
+    background-color: #f7f7f7;
+    border: solid 1px #00c1b4;
+    padding: 10px;
+    
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+.tag {
+    background-color: bisque;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 1px #000;
+    border-radius: 5px;
+}
+
 
