@@ -10,15 +10,15 @@
             
             <div class="linkwrapper">
                 <div class="commonsearches">
-                    <a href="index.php?page=showall">All</a> | 
-                    <a href="index.php?page=author">Authors</a> | 
-                    <a href="#">Item</a> 
+                    <a href="index.php?page=showall">All</a> 
+                    <a href="index.php?page=recent">Recent</a> 
+                    <a href="index.php?page=random">Random</a> 
                 </div>  <!-- / common searches -->
             
                 <div class="topsearch">
                     
                     <!-- Quick Search -->           
-                    <form method="post" action="quick_search.php" enctype="multipart/form-data">
+                    <form method="post" action="index.php?page=quick_search" enctype="multipart/form-data">
 
                         <input class="search quicksearch" type="text" name="quick_search" size="40" value="" required placeholder="Quick Search..." />
 
@@ -29,7 +29,27 @@
                 </div>  <!-- / top search -->
                 
                 <div class="topadmin">
-                    <a href="#">Log In</a>
+
+                <?php
+
+                if(isset($_SESSION['admin'])) {
+
+
+                ?>
+                Add Quote &nbsp; &nbsp;
+                Log out
+                
+                <?php
+
+                }
+                else {
+                    ?>
+                <a href="index.php?page=../admin/login">Login</a>
+
+                <?php
+                }
+                
+                ?>
                     
                 </div>  <!-- / top admin -->
                 

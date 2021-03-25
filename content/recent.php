@@ -1,9 +1,9 @@
-<h2>All Results</h2>
+<h2>Recent Additions</h2>
 
 <?php
 
 $find_sql ="SELECT * FROM `quotes`
-JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`)
+JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) ORDER BY `quotes`.`ID` DESC
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);

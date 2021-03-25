@@ -1,4 +1,4 @@
-<p>
+    <p>
         <?php
             $sub1_ID = $find_rs['Subject1_ID'];
             $sub2_ID = $find_rs['Subject2_ID'];
