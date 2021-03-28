@@ -25,6 +25,7 @@ if(isset($_SESSION['admin'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
+        $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
     
     
     
@@ -59,6 +60,18 @@ else {
     rows="6"><?php echo $quote; ?></textarea>
     <br/><br />
     
+        <input class="add-field <?php echo $notes; ?>" type="text" name="notes" value="<?php echo $notes; ?>" placeholder="Notes (optional) ..."/>
+    
+    <br/><br />
+    
+    <div class="<?php $tag_1_error ?>">
+    </div>
+    
+    <div class="autocomplete">
+        <input class="<?php echo $tag_1_field; ?>" id="subject1" type="text"
+        name="Subject_1" placeholder="Subject 1 (Start Typing)...">
+    </div>
+    
     <p>
         <input type="submit" value="Submit" />    
     </p>
@@ -66,3 +79,15 @@ else {
 
 
 </form>
+
+
+<script>
+<?php include("autocomplete.php"); ?>
+
+    
+var all_tags = <?php print("$all_subjects"); ?>;
+autocomplete(documnet.getElementById("subject1"), all_tags);
+
+    
+</script>
+
