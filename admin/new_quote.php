@@ -40,7 +40,7 @@ else {
 <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?page=../admin/new_quote");?>">
 
     <div>
-        <b>Quote Quthor:</b> &nbsp;
+        <b>Quote Author:</b> &nbsp;
 
         
     <select name="author">
