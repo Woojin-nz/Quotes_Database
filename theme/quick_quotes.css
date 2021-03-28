@@ -246,3 +246,44 @@ input {
     border: solid 1px #721a1a;
 }
 
+select {
+    height: 40px;
+    padding: 5px;
+    
+}
+
+input.tag-error[type=text] {
+    background-color: #ff9e9e;
+}
+
+input.tag-ok[type=text] {
+    background-color: #fff;
+}
+
+.form-ok{
+    background-color:#fff;
+}
+
+.form-error {
+    background-color: #ff9e9e;
+}
+
+.no-error {
+    display: none;
+}   
+
+.error-text {
+    color: darkred;
+}
+
+textarea,
+input[type=text] {
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+}
+
+textarea {
+    width: 90%;
+    max-width: 700px;
+    
+}

@@ -10,6 +10,14 @@ if(isset($_SESSION['admin'])) {
     $first = "";
     $middle = "";
     $last = "";
+    
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $author_ID = mysqli_real_escape_string($dbconnect, $_POST['author']);
+    $_SESSION['Add_Quote']=$author_ID;
+    header('Location: index.php?page=../admin/add_entry');
+        
+    }
 
 }
 
@@ -35,7 +43,7 @@ else {
         <b>Quote Quthor:</b> &nbsp;
 
         
-    <select>
+    <select name="author">
         <option value="unknown" selected>New Author</option>
 
         <?php
