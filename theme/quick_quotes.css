@@ -203,7 +203,12 @@ input {
     padding: 10px;
     display: inline-block;
     border: 1px solid #000;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    width: 95%;
+}
+
+input.short {
+    width: 100px;
 }
 
 
