@@ -25,7 +25,7 @@ if(isset($_SESSION['admin'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
-        $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
+    $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
     
     
     
@@ -56,7 +56,7 @@ else {
         This field cannot be blank
     </div>
     
-    <textarea class="add-field <?php echo $quote-field?>" name="quote"
+    <textarea class="add-field <?php echo $quote_field?>" name="quote"
     rows="6"><?php echo $quote; ?></textarea>
     <br/><br />
     
