@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="Site featuring short quotes by both famous and not so famous people">
     <meta name="keywords" content="quotes, famous, author, writer, sportsman, political activist, sayings">
-    <meta name="author" content="Woojin Jeon">
+    <meta name="author" content="Woojin Jeon with small weewee">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Quick Quotes</title>
