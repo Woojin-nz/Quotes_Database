@@ -41,7 +41,7 @@ if (isset($_SESSION['admin'])) {
             $tag_1_error = "error-text";
             $tag_1_field = "form-error";
         }
-
+        
         if ($has_errors != "yes") {
 
         $subjectID_1 = get_ID($dbconnect, 'subject', 'Subject_ID', 'Subject', $tag_1);
