@@ -18,13 +18,6 @@
                 
             ?>
         <!-- show subjects -->
-
-        <!-- OKAY WOOJIN SO I THINK I AM 
-        MISSING A WHOLE SUBJECT.PHP FILE 
-        PLEASE ASK MISS ABOUT THIS
-        VERY CRUICAL -->
-
-
         <span class="tag">
             <a href="index.php?page=subject&subjectID=<?php echo
             $sub_rs['Subject_ID']; ?>">
