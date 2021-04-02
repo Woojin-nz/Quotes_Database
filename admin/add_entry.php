@@ -53,6 +53,47 @@ if(isset($_SESSION['admin'])) {
     $tag_1_field = "tag-ok";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if($author_ID == "unknown"){
+        $first = mysqli_real_escape_string($dbconnect, $_POST['first']);
+        $middle = mysqli_real_escape_string($dbconnect, $_POST['middle']);
+        $last = mysqli_real_escape_string($dbconnect, $_POST['last']);
+        $dob = mysqli_real_escape_string($dbconnect, $_POST['dob']);
+
+        $gender_code = mysqli_real_escape_string($dbconnect,
+        $_POST['gender']);
+        if ($gender_code=="F"){
+            $gender="Female";
+        }
+        else if ($gender_code=="M") {
+            $gender = "Male";
+        }
+        else{
+            $gender = "";
+        }
+
+        $country_1 = mysqli_real_escape_string($dbconnect, $_POST['country1']);
+        $country_2 = mysqli_real_escape_string($dbconnect, $_POST['country2']);
+        $occupation_1 = mysqli_real_escape_string($dbconnect, $_POST['occupation1']);
+        $occupation_2 = mysqli_real_escape_string($dbconnect, $_POST['occupation2']);
+
+
+        if ($last == "") {
+        $has_errors = "yes";
+        $last_error = "error-text";
+        $last_field = "form-error";
+        }
+
+
+        // OKAY WOOJIN THIS IS ADD AUTHOR PART 4 (VIDEO)
+        // THE GIVEN FUNCTION IS NOT PRESENT IN MY FUNCTIONS.PHP FILE SO REMEMBER TO GO BACK AND ADD IT
+        // IT WAS NOT GIVEN ALONG THE SUPPORT FILES THAT MISS HAD UPLOADED
+        $valid_dob = isValidYear($dob);
+
+
+
+
+    }
     
     $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
     $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
@@ -63,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
     
-    if ($quote == "Please type your quote here") {
+    if ($quote == "Please type your quote here" or $quote == "") {
         $has_errors= "yes";
         $quote_error = "error-text";
         $quote_field = "form-error";
@@ -124,7 +165,7 @@ enctype="multipart/form-data">
 
     <br /><br/>
 
-    <select class="adv <?php echo $gender_field; ?>" name="gender">
+    <select class="adv gender <?php echo $gender_field; ?>" name="gender">
 
         <?php
         if($gender_code =="") {
@@ -189,6 +230,13 @@ enctype="multipart/form-data">
     <div class="autocomplete ">
         <input class="<?php $occupation_1_field; ?>" id="occupation1" type="text"
         name="occupation1" placeholder="Occupation 1 (Required, Start Typing)...">
+    </div>
+
+    <br/><br/>
+
+    <div class="autocomplete ">
+        <input class="<?php $occupation_2_field; ?>" id="occupation2" type="text"
+        name="occupation2" placeholder="Occupation 2">
     </div>
 
     <br/><br/>
