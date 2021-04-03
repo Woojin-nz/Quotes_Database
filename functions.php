@@ -119,4 +119,13 @@ function country_job($dbconnect, $entity_1, $entity_2, $label_sg, $label_pl, $ta
      
 }
 
+function isValidYear($year)
+{
+    $start_year = strtotime(date('Y') - 5000);
+    $end_year = strtotime(date('Y'));
+    $received_year = strtotime($year);
+
+    return (($received_year >= $start_year) && ($received_year <= $end_year));
+}
+
 ?>
