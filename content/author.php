@@ -40,16 +40,41 @@ include("get_author.php");
     <p>
         <?php
         // show countries...   
-        country_job($dbconnect,$country1,$country2,"Country","Countries","country","Country_ID", "Birth Country")
+        country_job($dbconnect,$country1,$country2,"Country","Countries","country","Country_ID", "Birth_Country")
         ?>
     </p>
 
     <p>
         <?php
         // show occupation... 
-        country_job($dbconnect,$occupation1,$occupation2,"Job","Jobs","career","Job_ID","Job Tag 1")
+        country_job($dbconnect,$occupation1,$occupation2,"Job","Jobs","career","Job_ID","Job_Tag_1")
         ?>
     </p>
+
+
+    <?php
+
+    if (isset($_SESSION['admin'])){
+
+
+        ?>
+
+    <div class="edit-tools">
+    
+    <a href="index.php?page=../admin/editauthor&ID<?php echo $find_rs['Author_ID'];?>"
+    title="Edit Author"><i class="fa fa-edit fa-2x"></i></a>
+
+    &nbsp; &nbsp;
+
+    <a href="index.php?page=../admin/deleteauthor_confirm&ID<?php echo $find_rs['Author_ID'];?>"
+    title="Delete Author"><i class="fa fa-trash fa-2x"></i></a>
+    
+    </div>
+
+    <?php
+    }
+
+    ?>
 </div>
 
 <br />

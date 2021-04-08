@@ -6,11 +6,11 @@ if (isset($_SESSION['admin'])) {
 
     if ($author_ID == "unknown") {
 
-        $all_coutries_sql = "SELECT * FROM `country` ORDER BY `country`.`Birth Country` ASC";
-        $all_countries = autocomplete_list($dbconnect, $all_coutries_sql, 'Birth Country');
+        $all_coutries_sql = "SELECT * FROM `country` ORDER BY `country`.`Birth_Country` ASC";
+        $all_countries = autocomplete_list($dbconnect, $all_coutries_sql, 'Birth_Country');
 
-        $all_occupations_sql = "SELECT * FROM `career` ORDER BY `career`.`Job Tag 1` ASC";
-        $all_occupations = autocomplete_list($dbconnect, $all_occupations_sql, 'Job Tag 1');
+        $all_occupations_sql = "SELECT * FROM `career` ORDER BY `career`.`Job_Tag_1` ASC";
+        $all_occupations = autocomplete_list($dbconnect, $all_occupations_sql, 'Job_Tag_1');
 
 
         $first = "";
@@ -100,12 +100,16 @@ if (isset($_SESSION['admin'])) {
                 $occupation_1_error = "error-text";
                 $occupation_1_field = "tag-error";
             }
+            
+                        
+            $countryID_1 = get_ID($dbconnect, 'country', 'Country_ID', 'Birth_Country', $country_1);
+            $countryID_2 = get_ID($dbconnect, 'country', 'Country_ID', 'Birth_Country', $country_2);
+            $occupationID_1 = get_ID($dbconnect, 'career', 'Job_ID', 'Job_Tag_1', $occupation_1);
+            $occupationID_2 = get_ID($dbconnect, 'career', 'Job_ID', 'Job_Tag_1', $occupation_2);
 
-            $countryID_1 = get_ID($dbconnect, 'country', 'Country_ID', 'Birth Country', $country_1);
-            $countryID_2 = get_ID($dbconnect, 'country', 'Country_ID', 'Birth Country', $country_2);
-            $occupationID_1 = get_ID($dbconnect, 'career', 'Job_ID', 'Job Tag 1', $occupation_1);
-            $occupationID_2 = get_ID($dbconnect, 'career', 'Job_ID', 'Job Tag 1', $occupation_2);
-        }
+          
+
+       }
 
         $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
         $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
