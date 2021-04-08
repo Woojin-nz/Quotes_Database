@@ -7,10 +7,7 @@ if(!isset($_REQUEST['authorID']))
 
 $author_to_find = $_REQUEST['authorID'];
 
-$find_sql ="SELECT * FROM `quotes`
-JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) 
-WHERE `quotes`.`Author_ID` = $author_to_find;
-";
+$find_sql ="SELECT * FROM `authors` WHERE `Author_ID` = $author_to_find";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
 
@@ -19,8 +16,6 @@ $country2 = $find_rs['Country_2ID'];
 
 $occupation1 = $find_rs["Job_1ID"];
 $occupation2 = $find_rs["Job_2ID"];
-
-
 
 // get author name
 
@@ -80,6 +75,20 @@ include("get_author.php");
 <br />
 
 <?php
+
+$find_quotes_sql = "SELECT * FROM `quotes` WHERE `Author_ID` = $author_to_find";
+$find_quotes_query = mysqli_query($dbconnect, $find_quotes_sql);
+
+$count = mysqli_num_rows($find_quotes_query);
+
+    if($count > 0) {
+    $find_sql = "SELECT * FROM `quotes`
+    JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) 
+    WHERE `quotes`.`Author_ID` = $author_to_find;
+    ";
+    $find_query = mysqli_query($dbconnect, $find_sql);
+    $find_rs = mysqli_fetch_assoc($find_query);
+    
 // Loop through results and display them...
 
 do{
@@ -102,7 +111,7 @@ do{
 
 } // end of display results 'do'
 
-while($find_rs = mysqli_fetch_assoc($find_query))
+while($find_rs = mysqli_fetch_assoc($find_query));
     
-    
+}
 ?>

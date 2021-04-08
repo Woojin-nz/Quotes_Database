@@ -30,7 +30,7 @@ body {
     
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 900px) {
     .wrapper{
         grid-template-columns: auto;
         grid-template-rows: auto;
@@ -72,7 +72,7 @@ body {
 
 .linkwrapper {
     display: grid;
-    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-columns: 1fr 300px 200px;
     grid-template-areas: 
         "commonsearches topsearch topadmin";
     grid-gap: 4px;
@@ -293,7 +293,13 @@ textarea {
     
 }
 
+.add-field{
+    width: 90%;
+}
+
 
 .gender {
     width: 60%;
 }
+
+
