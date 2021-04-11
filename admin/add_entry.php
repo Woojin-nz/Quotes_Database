@@ -251,29 +251,29 @@ if (isset($_SESSION['admin'])) {
         </div>
 
         <div class="autocomplete ">
-            <input class="<?php echo $country_1_field; ?>" id="country1" type="text" name="country1" placeholder="Country 1 (Start Typing)...">
+            <input class="add-field <?php echo $country_1_field; ?>" id="country1" type="text" name="country1" placeholder="Country 1 (Start Typing)...">
         </div>
 
         <br /><br />
 
         <div class="autocomplete">
-            <input id="country2" type="text" name="country2" placeholder="Country 2 (Start Typing)...">
+            <input class="add-field" id="country2" type="text" name="country2" placeholder="Country 2 (Start Typing)...">
         </div>
 
         <br /><br />
 
-        <div class="<?php echo $occupation_1_error ?>">
+        <div class="add-field <?php echo $occupation_1_error ?>">
             Please enter at least one occupation
         </div>
 
         <div class="autocomplete ">
-            <input class="<?php echo $occupation_1_field; ?>" id="occupation1" type="text" name="occupation1" placeholder="Occupation 1 (Required, Start Typing)...">
+            <input class="add-field <?php echo $occupation_1_field; ?>" id="occupation1" type="text" name="occupation1" placeholder="Occupation 1 (Required, Start Typing)...">
         </div>
 
         <br /><br />
 
         <div class="autocomplete ">
-            <input class="<?php $occupation_2_field; ?>" id="occupation2" type="text" name="occupation2" placeholder="Occupation 2">
+            <input class="add-field <?php $occupation_2_field; ?>" id="occupation2" type="text" name="occupation2" placeholder="Occupation 2">
         </div>
 
         <br /><br />
@@ -301,19 +301,19 @@ if (isset($_SESSION['admin'])) {
     </div>
 
     <div class="autocomplete">
-        <input class="<?php echo $tag_1_field; ?>" id="subject1" type="text" name="Subject_1" value="<?php echo $tag_1; ?>" placeholder="Subject 1 (Start Typing)...">
+        <input class="add-field <?php echo $tag_1_field; ?>" id="subject1" type="text" name="Subject_1" value="<?php echo $tag_1; ?>" placeholder="Subject 1 (Start Typing)...">
     </div>
 
     <br /><br />
 
     <div class="autocomplete">
-        <input id="subject2" type="text" name="Subject_2" value="<?php echo $tag_2; ?>" placeholder="Subject 2 (Start Typing)...">
+        <input class="add-field" id="subject2" type="text" name="Subject_2" value="<?php echo $tag_2; ?>" placeholder="Subject 2 (Start Typing)...">
     </div>
 
     <br /><br />
 
     <div class="autocomplete">
-        <input id="subject3" type="text" name="Subject_3" value="<?php echo $tag_3; ?>" placeholder="Subject 3 (Start Typing)...">
+        <input class="add-field" id="subject3" type="text" name="Subject_3" value="<?php echo $tag_3; ?>" placeholder="Subject 3 (Start Typing)...">
     </div>
 
     <p>
@@ -334,6 +334,11 @@ if (isset($_SESSION['admin'])) {
     autocomplete(document.getElementById("subject2"), all_tags);
     autocomplete(document.getElementById("subject3"), all_tags);
 
+<?php
+    if($author_ID == "unknown"){
+
+    ?>
+
     var all_countries = <?php print("$all_countries"); ?>;
     autocomplete(document.getElementById("country1"), all_countries);
     autocomplete(document.getElementById("country2"), all_countries);
@@ -341,4 +346,8 @@ if (isset($_SESSION['admin'])) {
     var all_occupations = <?php print("$all_occupations"); ?>;
     autocomplete(document.getElementById("occupation1"), all_occupations);
     autocomplete(document.getElementById("occupation2"), all_occupations);
+    <?php
+    }
+    ?>
+
 </script>

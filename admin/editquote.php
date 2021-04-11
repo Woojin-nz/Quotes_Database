@@ -85,7 +85,7 @@ if (isset($_SESSION['admin'])) {
 
             $quote_ID = $get_quote_rs['ID'];
 
-            header('Location: index.php?page=editquote_success&quote_ID='.$quote_ID);
+            header('Location: index.php?page=editquote_success&quote_ID=' . $quote_ID);
         }
     }
 } else {
@@ -100,6 +100,9 @@ if (isset($_SESSION['admin'])) {
 <h1>Edit quote...</h1>
 
 <form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?page=../admin/editquote&ID=$ID"); ?>" enctype="multipart/form-data">
+
+    <p><i>If you need to change this quote's author and the author you need is NOT in the list below. Please <a href="index.php?page=../admin/add_author" target="_blank">add the author</a>. Then come back and reload this page to regresh the list.</i></p>
+
 
     <select class="gender" name="author">
         <option value="<?php echo $author_ID; ?>" selected>
