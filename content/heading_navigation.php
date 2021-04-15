@@ -2,7 +2,7 @@
         <div class="box banner">
             
     
-            <h1>Quick Quotes</h1>
+            <h1><a class="heading" href="index.php?page=home">Quick Quotes</a></h1>
         </div>    <!-- / banner -->
 
         <!-- Navigation goes here.  Edit BOTH the file name and the link name -->
@@ -41,13 +41,11 @@
                 &nbsp; &nbsp;
 
 
-                <a href="index.php?page=../admin/logout" title="Log out"><i class="fa fa-sign-out fa-2x"></i>
-                </a>
+                <a href="index.php?page=../admin/logout" title="Log out"><i class="fa fa-sign-out fa-2x"></i></a>
 
                 &nbsp; &nbsp;
 
-                <a href="index.php?page=../admin/admin_panel" title="Admin Panel">
-                <i class="fa fa-ellipsis-v fa-2x"></i></a>
+                <a href="index.php?page=../admin/admin_panel" title="Admin Panel"><i class="fa fa-ellipsis-v fa-2x"></i></a>
 
                 &nbsp; &nbsp;
                 

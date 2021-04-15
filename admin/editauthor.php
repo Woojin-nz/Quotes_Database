@@ -2,26 +2,45 @@
 
 if (isset($_SESSION['admin'])) {
 
+    $author_ID = $_REQUEST['ID'];
+
     $all_coutries_sql = "SELECT * FROM `country` ORDER BY `country`.`Birth_Country` ASC";
     $all_countries = autocomplete_list($dbconnect, $all_coutries_sql, 'Birth_Country');
 
     $all_occupations_sql = "SELECT * FROM `career` ORDER BY `career`.`Job_Tag_1` ASC";
     $all_occupations = autocomplete_list($dbconnect, $all_occupations_sql, 'Job_Tag_1');
 
+    $all_authors_sql = "SELECT * FROM `authors` WHERE Author_ID= $author_ID";
+    $all_authors_query = mysqli_query($dbconnect, $all_authors_sql);
+    $all_authors_rs = mysqli_fetch_assoc($all_authors_query);
 
-    $first = "";
-    $middle = "";
-    $last = "";
-    $dob = "";
-    $gender_code = "";
-    $gender = "";
-    $country_1 = "";
-    $country_2 = "";
-    $occupation_1 = "";
-    $occupation_2 = "";
+    $first = $all_authors_rs['First'];
+    $middle = $all_authors_rs['Initial'];
+    $last = $all_authors_rs['Last'];
+    $dob = $all_authors_rs['Born'];
+    $gender_code=$all_authors_rs['Gender'];
 
-    $country_1_ID = $country_2_ID = $occupation_1_ID = $occupation_2_ID = 0;
+    if($gender_code == "M") {
+    $gender = "Male";
+    }
+    else {
+        $gender="Female";
+    }
 
+    $country_1_ID = $all_authors_rs['Country_1ID'];
+    $country_2_ID = $all_authors_rs['Country_2ID'];
+    $occupation_1_ID = $all_authors_rs['Job_1ID'];
+    $occupation_2_ID = $all_authors_rs['Job_2ID'];
+
+    $country_1_rs = get_rs($dbconnect,"SELECT * FROM `country` WHERE `Country_ID` = $country_1_ID");
+    $country_2_rs = get_rs($dbconnect,"SELECT * FROM `country` WHERE `Country_ID` = $country_2_ID");
+    $occupation_1_rs = get_rs($dbconnect, "SELECT * FROM `career` WHERE `JOB_ID` = $occupation_1_ID");
+    $occupation_2_rs = get_rs($dbconnect, "SELECT * FROM `career` WHERE `JOB_ID` = $occupation_2_ID");
+    
+    $country_1 = $country_1_rs['Birth_Country'];
+    $country_2 = $country_2_rs['Birth_Country'];
+    $occupation_1 = $occupation_1_rs['Job_Tag_1'];
+    $occupation_2 = $occupation_2_rs['Job_Tag_1'];
 
     $last_error = $dob_error = $gender_error = $country_1_error = $occupation_1_error = "no-error";
 
@@ -61,12 +80,6 @@ if (isset($_SESSION['admin'])) {
             $last_field = "form-error";
         }
 
-        if($gender == "") {
-            $has_errors="yes";
-            $gender_error="error-text";
-            $gender_field = "form-error";
-        }
-
         $valid_dob = isValidYear($dob);
         if ($dob < 0 or $valid_dob != 1 or !preg_match('/^\d{1,4}$/', $dob)) {
             $has_errors = "yes";
@@ -87,27 +100,23 @@ if (isset($_SESSION['admin'])) {
         }
 
 
+       
+
+    if ($has_errors != "yes"){
+        
         $countryID_1 = get_ID($dbconnect, 'country', 'Country_ID', 'Birth_Country', $country_1);
         $countryID_2 = get_ID($dbconnect, 'country', 'Country_ID', 'Birth_Country', $country_2);
         $occupationID_1 = get_ID($dbconnect, 'career', 'Job_ID', 'Job_Tag_1', $occupation_1);
         $occupationID_2 = get_ID($dbconnect, 'career', 'Job_ID', 'Job_Tag_1', $occupation_2);
 
 
-    if ($has_errors != "yes"){
-        $add_author_sql = "INSERT INTO `authors` (`Author_ID`, `First`, `Last`, `Initial`, `Gender`, `Born`, `Country_1ID`, `Country_2ID`, `Job_1ID`, `Job_2ID`) VALUES (NULL, '$first', '$last', '$middle', '$gender_code', '$dob', '$countryID_1', '$countryID_2',
-        '$occupationID_1', '$occupationID_2');";
-        $add_author_query = mysqli_query($dbconnect, $add_author_sql);
+        $editauthor_sql = "UPDATE `authors` SET `First` = '$first', `Last` = '$last', 
+        `Initial` = '$middle', `Gender` = '$gender_code', `Born` = '$dob', `Country_1ID` = '$countryID_1', 
+        `Country_2ID` = '$countryID_2', `Job_1ID` = '$occupationID_1', `Job_2ID` = '$occupationID_2' WHERE 
+        `authors`.`Author_ID` = $author_ID;";
+        $editentry_author = mysqli_query($dbconnect, $editauthor_sql);
 
-        $find_author_sql = "SELECT * FROM `authors` WHERE `Last` = '$last'";
-        $find_author_query = mysqli_query($dbconnect, $find_author_sql);
-        $find_author_rs = mysqli_fetch_assoc($find_author_query);
-
-        $new_authorID = $find_author_rs['Author_ID'];
-        echo "New Author Id:" . $new_authorID;
-
-        $author_ID = $new_authorID;
-
-        header('Location: index.php?page=../content/author&authorID=' . $author_ID);
+        header('Location: index.php?page=author&authorID=' . $author_ID);
     }
 }
 }
@@ -115,9 +124,9 @@ if (isset($_SESSION['admin'])) {
 ?>
 
 
-<h1>Add An Author...</h1>
+<h1>Edit An Author...</h1>
 
-<form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?page=../admin/add_author"); ?>" enctype="multipart/form-data">
+<form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?page=../admin/editauthor&ID=$author_ID"); ?>" enctype="multipart/form-data">
 
     <input class="add-field" type="text" name="first" value="<?php echo
                                                                 $first; ?>" placeholder="Author's First Name" />
@@ -137,9 +146,6 @@ if (isset($_SESSION['admin'])) {
 
     <br /><br />
 
-    <div class="<?php echo $gender_error; ?>">
-        Please choose a gender...
-    </div>
     <select class="adv gender <?php echo $gender_field; ?>" name="gender">
 
         <?php

@@ -56,12 +56,12 @@ include("get_author.php");
 
     <div class="edit-tools">
     
-    <a href="index.php?page=../admin/editauthor&ID<?php echo $find_rs['Author_ID'];?>"
+    <a href="index.php?page=../admin/editauthor&ID=<?php echo $find_rs['Author_ID'];?>"
     title="Edit Author"><i class="fa fa-edit fa-2x"></i></a>
 
     &nbsp; &nbsp;
 
-    <a href="index.php?page=../admin/deleteauthor_confirm&ID<?php echo $find_rs['Author_ID'];?>"
+    <a href="index.php?page=../admin/deleteauthor_confirm&ID=<?php echo $find_rs['Author_ID'];?>"
     title="Delete Author"><i class="fa fa-trash fa-2x"></i></a>
     
     </div>

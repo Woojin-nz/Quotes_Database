@@ -3,7 +3,7 @@
 
 <?php
 
-$quote_ID=$_SESSION['Quote_Success'];
+$quote_ID = $_SESSION['Quote_Success'];
 
 $find_sql ="SELECT * FROM `quotes`
 JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) WHERE 'ID' = $quote_ID";

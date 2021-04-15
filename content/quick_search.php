@@ -24,6 +24,7 @@ $find_sql ="SELECT * FROM `quotes`
 JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`)
 WHERE `Last` LIKE '%$quick_find%'
 OR `First` LIKE '%$quick_find%'
+OR `Quote` LIKE '%$quick_find$'
 OR `Subject1_ID` = $subject_ID
 OR `Subject2_ID` = $subject_ID
 OR `Subject3_ID` = $subject_ID

@@ -3,7 +3,7 @@
 <?php
 
 $find_sql ="SELECT * FROM `quotes`
-JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) ORDER BY `quotes`.`ID` DESC
+JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) ORDER BY `quotes`.`ID` DESC LIMIT 10 
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
