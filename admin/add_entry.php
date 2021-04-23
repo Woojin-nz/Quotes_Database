@@ -140,10 +140,8 @@ if (isset($_SESSION['admin'])) {
 
             if ($author_ID == "unknown") {
                 $add_author_sql = "INSERT INTO `authors` (`Author_ID`, `First`, `Last`, `Initial`, `Gender`, `Born`, `Country_1ID`, `Country_2ID`, `Job_1ID`, `Job_2ID`) VALUES (NULL, '$first', '$last', '$middle', '$gender_code', '$dob', '$countryID_1', '$countryID_2',
-         '$occupationID_1', '$occupationID_2');";
+                '$occupationID_1', '$occupationID_2');";
                 $add_author_query = mysqli_query($dbconnect, $add_author_sql);
-
-
 
                 $find_author_sql = "SELECT * FROM `authors` WHERE `Last` = '$last'";
                 $find_author_query = mysqli_query($dbconnect, $find_author_sql);

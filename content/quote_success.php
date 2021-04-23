@@ -6,7 +6,7 @@
 $quote_ID = $_SESSION['Quote_Success'];
 
 $find_sql ="SELECT * FROM `quotes`
-JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) WHERE 'ID' = $quote_ID";
+JOIN authors ON(`authors`.`Author_ID` =`quotes`.`Author_ID`) WHERE `ID` = $quote_ID";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
 
