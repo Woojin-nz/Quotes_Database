@@ -32,12 +32,21 @@ if(isset($_SESSION['admin'])) {
 </div>
 
 <p>
-    <a href="index.php?page=../admin/deleteauthor&ID=<?php echo $_REQUEST['ID']; ?>"> Yes, Delete it!</a>
-    <a href="index.php?page=author&ID=<?php echo $_REQUEST['ID'];?>">No, take me back</a>
+    <a href="index.php?page=../admin/deleteauthor&ID=<?php echo $author_ID; ?>"> Yes, Delete it!</a>
+    <a href="index.php?page=../content/author&authorID=<?php echo $author_ID;?>">No, take me back</a>
     </p>
 
     <?php
         }
+    else{
+        ?>
+        
+<p>
+    <a href="index.php?page=../admin/deleteauthor&ID=<?php echo $_REQUEST['ID']; ?>"> Yes, Delete it!</a>
+    <a href="index.php?page=author&authorID=<?php echo $_REQUEST['ID'];?>">No, take me back</a>
+    </p>
+<?php
+    }
 
 }
 

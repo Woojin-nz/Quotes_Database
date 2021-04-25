@@ -15,8 +15,12 @@ if(isset($_SESSION['admin'])) {
     
     $author_ID = mysqli_real_escape_string($dbconnect, $_POST['author']);
 
+    if($author_ID == "unknown"){
+        header('Location: index.php?page=../admin/admin_panel');
+    }
+    else{
     header('Location: index.php?page=author&authorID='.$author_ID);
-        
+    }
     }
 }
 
@@ -74,3 +78,5 @@ or choose an author form the dropdown box below to edit / delete an existing aut
     value="Next..." />
 
 </form>
+
+&nbsp; &nbsp;

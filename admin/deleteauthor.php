@@ -2,12 +2,10 @@
 
 if(isset($_SESSION['admin'])) {
 
-    $author_ID = $_REQUEST['ID'];
-
-    $deletequote_sql = "DELETE FROM `quotes` WHERE `Author_ID`".$_REQUEST['ID'];
+    $deletequote_sql = "DELETE FROM `quotes` WHERE `Author_ID`=".$_REQUEST['ID'];
     $deletequote_query = mysqli_query($dbconnect, $deletequote_sql);
 
-    $delete_author_sql ="DELETE FROM `authors` WHERE `author`.`Author_ID`=".$_REQUEST['ID'];
+    $delete_author_sql ="DELETE FROM `authors` WHERE `Author_ID`=".$_REQUEST['ID'];
     $delete_author_query = mysqli_query($dbconnect,$delete_author_sql);
 
 ?>

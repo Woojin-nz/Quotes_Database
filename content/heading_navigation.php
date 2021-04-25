@@ -40,17 +40,14 @@
                 <a href="index.php?page=../admin/new_quote" title="Add a new quote"><i class="fa fa-plus fa-2x"></i></a>
                 &nbsp; &nbsp;
 
-
-                <a href="index.php?page=../admin/logout" title="Log out"><i class="fa fa-sign-out fa-2x"></i></a>
-
-                &nbsp; &nbsp;
-
+                
                 <a href="index.php?page=../admin/admin_panel" title="Admin Panel"><i class="fa fa-ellipsis-v fa-2x"></i></a>
 
                 &nbsp; &nbsp;
                 
-                <?php
+                <a href="index.php?page=../admin/logout" title="Log out"><i class="fa fa-sign-out fa-2x"></i></a>
 
+                <?php
                 }
                 else {
                     ?>
