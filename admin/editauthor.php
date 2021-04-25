@@ -189,13 +189,13 @@ if (isset($_SESSION['admin'])) {
     </div>
 
     <div class="autocomplete ">
-        <input class="add-field <?php echo $country_1_field; ?>" id="country1" type="text" name="country1" placeholder="Country 1 (Start Typing)...">
+        <input class="add-field <?php echo $country_1_field; ?>" id="country1" type="text" name="country1" value="<?php echo $country_1; ?>" placeholder="Country 1 (Start Typing)...">
     </div>
 
     <br /><br />
 
     <div class="autocomplete">
-        <input class="add-field" id="country2" type="text" name="country2" placeholder="Country 2 (Start Typing)...">
+        <input class="add-field" id="country2" type="text" name="country2"  placeholder="Country 2...">
     </div>
 
     <br /><br />
@@ -205,13 +205,13 @@ if (isset($_SESSION['admin'])) {
     </div>
 
     <div class="autocomplete ">
-        <input class="add-field <?php echo $occupation_1_field; ?>" id="occupation1" type="text" name="occupation1" placeholder="Occupation 1 (Required, Start Typing)...">
+        <input class="add-field <?php echo $occupation_1_field; ?>" id="occupation1" type="text" name="occupation1" value="<?php echo $occupation_1; ?>"placeholder="Occupation 1 (Required, Start Typing)...">
     </div>
 
     <br /><br />
 
     <div class="autocomplete ">
-        <input class="add-field <?php $occupation_2_field; ?>" id="occupation2" type="text" name="occupation2" placeholder="Occupation 2">
+        <input class="add-field <?php $occupation_2_field; ?>" id="occupation2" type="text" name="occupation2"  placeholder="Occupation 2">
     </div>
 
     <br /><br />

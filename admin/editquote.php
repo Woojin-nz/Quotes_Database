@@ -79,13 +79,14 @@ if (isset($_SESSION['admin'])) {
             $editentry_sql = "UPDATE `quotes` SET `Author_ID` = '$author_ID', `Quote` = '$quote', `Notes` = '$notes', `Subject1_ID` = '$subjectID_1', `Subject2_ID` = '$subjectID_2', `Subject3_ID` = '$subjectID_3' WHERE `quotes`.`ID` = $ID;";
             $editentry_query = mysqli_query($dbconnect, $editentry_sql);
 
-            $get_quote_sql = "SELECT * FROM 'quotes' WHERE 'Quote' = '$quote'";
+            $get_quote_sql = "SELECT * FROM `quotes` WHERE `Quote` = '$quote'";
             $get_quote_query = mysqli_query($dbconnect, $get_quote_sql);
             $get_quote_rs = mysqli_fetch_assoc($get_quote_query);
 
             $quote_ID = $get_quote_rs['ID'];
+            $_SESSION['Quote_Success'] = $quote_ID;
 
-            header('Location: index.php?page=editquote_success&quote_ID=' . $quote_ID);
+            header('Location: index.php?page=../content/editquote_success');
         }
     }
 } else {
